@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Extreme Air Horn</title>
+    <style>
+        body { background: #111; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: sans-serif; overflow: hidden; }
+        #horn-btn {
+            width: 250px; height: 250px; border-radius: 50%; border: none;
+            background: radial-gradient(circle, #ff4d4d, #b30000);
+            box-shadow: 0 10px 0 #7a0000, 0 20px 30px rgba(0,0,0,0.5);
+            color: white; font-size: 2rem; font-weight: bold; cursor: pointer;
+            transition: transform 0.1s; active: transform: translateY(5px);
+        }
+        #horn-btn:active { transform: translateY(8px); box-shadow: 0 2px 0 #7a0000; }
+    </style>
+</head>
+<body>
+    <button id="horn-btn">BWAAAA!</button>
+    <audio id="horn-sound" src="https://www.myinstants.com/media/sounds/mlg-air-horn.mp3"></audio>
+
+    <script>
+        const btn = document.getElementById('horn-btn');
+        const sound = document.getElementById('horn-sound');
+
+        btn.addEventListener('pointerdown', () => {
+            sound.currentTime = 0;
+            sound.play();
+            if (navigator.vibrate) navigator.vibrate(200); // Shakes the phone
+        });
+    </script>
+</body>
+</html>
